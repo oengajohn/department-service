@@ -1,0 +1,25 @@
+@host=http://localhost:8080
+
+POST {{host}}/api/department HTTP/1.1
+Content-Type: application/json
+
+{
+    "departmentName":"Computer Science"
+}
+
+### List All departments
+GET {{host}}/api/department HTTP/1.1
+
+### Get Department By Department Number
+GET {{host}}/api/department/2 HTTP/1.1
+
+### Update Department
+PUT {{host}}/api/department/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "departmentName":"Information Technology"
+}
+
+### Delete Department
+DELETE  {{host}}/api/department/1 HTTP/1.1
