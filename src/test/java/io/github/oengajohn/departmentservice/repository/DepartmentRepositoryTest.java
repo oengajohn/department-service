@@ -13,6 +13,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import io.github.oengajohn.departmentservice.AbstractTestContainersTest;
 import io.github.oengajohn.departmentservice.entity.Department;
 
 import static org.assertj.core.api.Assertions.*;
@@ -22,20 +23,10 @@ import java.util.Optional;
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-public class DepartmentRepositoryTest {
+public class DepartmentRepositoryTest extends AbstractTestContainersTest {
 
     @Autowired
     private DepartmentRepository departmentRepository;
-
-    @Container
-    @ServiceConnection
-    static MySQLContainer<?> mysqlContainer = new MySQLContainer<>(DockerImageName.parse("mysql:latest"));
-
-    @Test
-    void canEstablishConnection() {
-        assertThat(mysqlContainer.isCreated()).isTrue();
-        assertThat(mysqlContainer.isRunning()).isTrue();
-    }
 
     @BeforeEach
     void setup() {
