@@ -1,4 +1,4 @@
-@host=http://localhost:8080
+@host=http://localhost:8081
 
 POST {{host}}/api/department HTTP/1.1
 Content-Type: application/json
@@ -23,3 +23,12 @@ Content-Type: application/json
 
 ### Delete Department
 DELETE  {{host}}/api/department/1 HTTP/1.1
+
+### Get Departments By IDs
+POST  {{host}}/api/department/batch HTTP/1.1
+Content-Type: application/json
+
+[
+    1,2,3,4,5
+]
+

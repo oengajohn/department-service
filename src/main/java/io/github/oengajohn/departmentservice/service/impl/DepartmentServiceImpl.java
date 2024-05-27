@@ -70,4 +70,13 @@ public class DepartmentServiceImpl implements DepartmentService {
         map.put("success", true);
         return map;
     }
+
+    @Override
+    public List<DepartmentResponse> getDepartmentsByIds(List<Integer> ids) {
+        return departmentRepository.findAllById(ids)
+                .stream()
+                .map(department -> modelMapper.map(department, DepartmentResponse.class))
+                .toList();
+    }
+
 }

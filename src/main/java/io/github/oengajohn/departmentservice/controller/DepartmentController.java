@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.github.oengajohn.departmentservice.model.DepartmentRequest;
 import io.github.oengajohn.departmentservice.model.DepartmentResponse;
 import io.github.oengajohn.departmentservice.service.DepartmentService;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/department")
+@Slf4j
 public class DepartmentController {
     private final DepartmentService departmentService;
 
@@ -38,6 +40,7 @@ public class DepartmentController {
 
     @GetMapping("{departmentNumber}")
     public DepartmentResponse getByDepartmentNumber(@PathVariable Integer departmentNumber) {
+        log.info("Getting information -> getByDepartmentNumber");
         return departmentService.getByDepartmentNumber(departmentNumber);
     }
 
@@ -50,6 +53,12 @@ public class DepartmentController {
     @DeleteMapping("{departmentNumber}")
     public Map<String, Object> deleteDepartment(@PathVariable Integer departmentNumber) {
         return departmentService.deleteDepartment(departmentNumber);
+    }
+
+    @PostMapping("batch")
+    public List<DepartmentResponse> getDepartmentsByIds(@RequestBody List<Integer> ids) {
+        log.info("Getting information -> getDepartmentsByIds");
+        return departmentService.getDepartmentsByIds(ids);
     }
 
 }

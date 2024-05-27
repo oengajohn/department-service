@@ -18,4 +18,6 @@ public interface DepartmentService {
 
     Map<String, Object> deleteDepartment(Integer departmentNumber);
 
+    List<DepartmentResponse> getDepartmentsByIds(List<Integer> ids);
+
 }
