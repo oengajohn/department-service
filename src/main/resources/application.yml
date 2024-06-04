@@ -1,18 +1,5 @@
-server:
-  port: 8081
 spring:
   application:
     name: department-service
-  datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${DEPARTMENT_DB_NAME:departmentdb}
-    username: ${MYSQL_DB_USERNAME:root}
-    password: ${MYSQL_DB_PASSWORD:generic}
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  config:
+    import: optional:configserver:${EUREKA_SERVER_ADDRESS:http://localhost:8888}
